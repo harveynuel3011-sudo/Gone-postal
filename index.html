@@ -6,19 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
-  <body
+<body>
   <header>
-<img id="logo" src="https://i.imgur.com/qFCCq2v.jpeg" alt="Postal Dude head">
+    <div id="logo-container">
+      <img id="logo" src="https://i.imgur.com/qFCCq2v.jpeg" alt="Postal Dude">
+      <div id="static-overlay"></div>
+    </div>
     <h1>GONE POSTAL</h1>
-    <p>Special Forces Supply • No Questions Asked</p>
+    <p class="tagline">Special Forces Supply • No Questions Asked</p>
+    <div id="cart" onclick="alert('Cart: ' + cart.length + ' items')">
+      CART [<span id="cart-count">0</span>]
+    </div>
   </header>
 
-  <main id="gun-grid">
-    <!-- guns are injected by JS -->
-  </main>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterGuns('all')">ALL</button>
+    <button class="filter-btn" onclick="filterGuns('rifle')">RIFLES</button>
+    <button class="filter-btn" onclick="filterGuns('smg')">SMG</button>
+    <button class="filter-btn" onclick="filterGuns('shotgun')">SHOTGUN</button>
+  </div>
+
+  <main id="gun-grid"></main>
 
   <footer>
-    © Gone Postal 2025 – “We deliver when the post office won’t.”
+    <p>© Gone Postal 2025 – “We deliver when the post office won’t.”</p>
+    <p style="color: #f0a500; margin-top: 10px;">⚠️ N.Q.A. PROTOCOL ACTIVE ⚠️</p>
   </footer>
 
   <script src="guns.js"></script>
