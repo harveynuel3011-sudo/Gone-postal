@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gone Postal – Black-Market Firepower</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img id="logo" src="logo.png" alt="Postal Dude head">
+    <h1>GONE POSTAL</h1>
+    <p>Special Forces Supply • No Questions Asked</p>
+  </header>
+
+  <main id="gun-grid">
+    <!-- guns are injected by JS -->
+  </main>
+
+  <footer>
+    © Gone Postal 2025 – “We deliver when the post office won’t.”
+  </footer>
+
+  <script src="guns.js"></script>
+</body>
+</html>
