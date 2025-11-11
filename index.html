@@ -9,8 +9,7 @@
 <body>
   <header>
     <div id="logo-container">
-      <img id="logo" src="https://i.imgur.com/qFCCq2v.jpeg" alt="Postal Dude">
-      <div id="static-overlay"></div>
+      <img id="logo" src="https://i.imgur.com/qFCCq2v.jpeg" alt="Gone Postal Logo">
     </div>
     <h1>GONE POSTAL</h1>
     <p class="tagline">Special Forces Supply • No Questions Asked</p>
@@ -20,17 +19,17 @@
   </header>
 
   <div class="filters">
-    <button class="filter-btn active" onclick="filterGuns('all')">ALL</button>
-    <button class="filter-btn" onclick="filterGuns('rifle')">RIFLES</button>
-    <button class="filter-btn" onclick="filterGuns('smg')">SMG</button>
-    <button class="filter-btn" onclick="filterGuns('shotgun')">SHOTGUN</button>
+    <button class="filter-btn active" data-category="all">ALL</button>
+    <button class="filter-btn" data-category="rifle">RIFLES</button>
+    <button class="filter-btn" data-category="smg">SMG</button>
+    <button class="filter-btn" data-category="shotgun">SHOTGUN</button>
   </div>
 
   <main id="gun-grid"></main>
 
   <footer>
-    <p>© Gone Postal 2025 – “We deliver when the post office won’t.”</p>
-    <p style="color: #f0a500; margin-top: 10px;">⚠️ N.Q.A. PROTOCOL ACTIVE ⚠️</p>
+    <p>© Gone Postal 2025 – “We deliver when the post office won't.”</p>
+    <p style="color: #ff0033; margin-top: 10px;">⚠️ N.Q.A. PROTOCOL ACTIVE ⚠️</p>
   </footer>
 
   <script src="guns.js"></script>
