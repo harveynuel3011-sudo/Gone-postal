@@ -23,7 +23,7 @@ body {
   position: relative;
 }
 
-
+/* STATIC NOISE OVERLAY */
 body::before {
   content: '';
   position: fixed;
@@ -42,7 +42,7 @@ body::before {
   z-index: -1;
 }
 
-
+/* HEADER */
 header {
   display: flex !important;
   flex-direction: column !important;
@@ -55,12 +55,23 @@ header {
   background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.85) 100%);
 }
 
+header::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="%23ff0033" opacity="0.15"/></svg>') no-repeat center;
+  transform: rotate(20deg);
+  pointer-events: none;
+}
+
 #logo {
   display: block !important;
   margin: 0 auto 0.5rem auto !important;
   width: 100px;
   height: 100px;
-  /* REMOVED FILTER TO KEEP ORIGINAL COLORS */
   border: 2px solid var(--accent);
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255,0,51,0.4);
@@ -104,7 +115,7 @@ h1 {
   box-shadow: 0 0 20px rgba(139,0,0,0.8);
 }
 
-
+/* FILTERS */
 .filters {
   display: flex;
   justify-content: center;
@@ -131,7 +142,7 @@ h1 {
   box-shadow: 0 0 15px var(--accent);
 }
 
-
+/* GRID */
 #gun-grid {
   flex: 1;
   display: grid;
@@ -143,7 +154,7 @@ h1 {
   width: 100%;
 }
 
-
+/* CARD */
 .card {
   background: var(--card);
   border: 1px solid #222;
@@ -217,7 +228,6 @@ h1 {
   color: var(--accent);
 }
 
-
 .buy-btn {
   width: 100%;
   padding: 15px;
@@ -242,7 +252,7 @@ h1 {
   transform: scale(0.95);
 }
 
-
+/* MODAL */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -396,7 +406,7 @@ h1 {
   box-shadow: 0 0 30px rgba(139,0,0,0.8);
 }
 
-
+/* FOOTER */
 footer {
   text-align: center;
   padding: 1.5rem;
@@ -412,7 +422,7 @@ footer p:last-child {
   font-weight: bold;
 }
 
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
   h1 { font-size: 2rem; }
   #cart {
