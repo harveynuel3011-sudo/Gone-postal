@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gone Postal – Black-Market Firepower</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gone Postal – Black-Market Firepower</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div id="logo-container">
-      <img id="logo" src="https://i.imgur.com/qFCCq2v.jpeg" alt="Gone Postal Logo">
-    </div>
-    <h1>GONE POSTAL</h1>
-    <p class="tagline">Special Forces Supply • No Questions Asked</p>
-    <div id="cart" onclick="alert('Cart: ' + cart.length + ' items')">
-      CART [<span id="cart-count">0</span>]
-    </div>
-  </header>
+<header>
+  <img id="logo" src="https://i.imgur.com/qFCCq2v.jpeg" alt="Logo">
+  <h1>GONE POSTAL</h1>
+  <p class="tagline">Special Forces Supply • No Questions Asked</p>
+  <div id="cart" onclick="Cart.open()">CART [<span id="cart-count">0</span>]</div>
+</header>
 
-  <div class="filters">
-    <button class="filter-btn active" data-category="all">ALL</button>
-    <button class="filter-btn" data-category="rifle">RIFLES</button>
-    <button class="filter-btn" data-category="smg">SMG</button>
-    <button class="filter-btn" data-category="shotgun">SHOTGUN</button>
+<div class="filters">
+  <button class="filter-btn active" data-category="all">ALL</button>
+  <button class="filter-btn" data-category="rifle">RIFLES</button>
+  <button class="filter-btn" data-category="smg">SMG</button>
+  <button class="filter-btn" data-category="shotgun">SHOTGUN</button>
+</div>
+
+<main id="gun-grid"></main>
+
+<div class="modal-overlay" id="productModal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="Modal.close()">&times;</span>
+    <div id="modalBody"></div>
   </div>
+</div>
 
-  <main id="gun-grid"></main>
-
-  <div id="modal-overlay" class="modal-overlay">
-    <div class="modal-content">
-      <span class="modal-close">&times;</span>
-      <div id="modal-body"></div>
-    </div>
+<div class="cart-modal-overlay" id="cartModal">
+  <div class="cart-modal-content">
+    <span class="cart-modal-close" onclick="Cart.close()">&times;</span>
+    <div id="cartBody"></div>
   </div>
+</div>
 
-  <footer style="position: relative;">
-    <p>© Gone Postal – "We deliver when the post office won't."</p>
-    <p style="color: #1F2022; margin-top: 10px;">⚠️ N.Q.A. PROTOCOL ACTIVE ⚠️</p>
-    <p style="position: absolute; bottom: 10px; left: 15px; font-size: 0.8em; color: #666; margin: 0;">Made by Harvey Verona</p>
-  </footer>
+<footer>
+  <p>© Gone Postal – "We deliver when the post office won't."</p>
+  <p style="color: var(--accent); margin-top: 10px;">⚠️ N.Q.A. PROTOCOL ACTIVE ⚠️</p>
+  <p style="position: absolute; bottom: 10px; left: 15px; font-size: 0.8em; color: #666; margin: 0;">Made by Harvey Verona</p>
+</footer>
 
-  <script src="guns.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
