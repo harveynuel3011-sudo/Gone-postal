@@ -94,12 +94,29 @@
   <div id="checkout-modal" class="modal-overlay shop-only" style="display:none;">
     <div class="modal-content" style="max-width:500px;">
       <span class="modal-close" onclick="closeCheckout()">&times;</span>
-      <h2 style="color:var(--glitch); text-align:center; margin-bottom:1.5rem;">SELECT PAYMENT METHOD</h2>
-      <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+      <h2 id="checkout-title" style="color:var(--glitch); text-align:center; margin-bottom:1.5rem;">SELECT PAYMENT METHOD</h2>
+      
+      <div id="payment-buttons" style="display:flex; gap:1rem; margin-bottom:1rem;">
         <button onclick="processPayment('gcash')" class="payment-btn gcash-btn">🇵🇭 GCASH</button>
         <button onclick="processPayment('cod')" class="payment-btn cod-btn">💵 CASH ON DELIVERY</button>
       </div>
-      <button onclick="closeCheckout()" style="width:100%; padding:0.75rem; background:#333; color:var(--text); border:none; cursor:pointer;">CANCEL</button>
+      
+      <div id="customer-form" style="display:none;">
+        <div style="margin-bottom:1rem;">
+          <label style="display:block; color:var(--accent); margin-bottom:0.5rem; font-weight:bold;">FULL NAME:</label>
+          <input type="text" id="customer-name" style="width:100%; padding:0.75rem; background:#222; border:1px solid var(--accent); color:var(--text); border-radius:3px;">
+        </div>
+        <div style="margin-bottom:1.5rem;">
+          <label style="display:block; color:var(--accent); margin-bottom:0.5rem; font-weight:bold;">PHONE NUMBER:</label>
+          <input type="tel" id="customer-phone" style="width:100%; padding:0.75rem; background:#222; border:1px solid var(--accent); color:var(--text); border-radius:3px;">
+        </div>
+        <div style="display:flex; gap:1rem;">
+          <button onclick="confirmOrder()" class="checkout-btn" style="flex:1;">CONFIRM ORDER</button>
+          <button onclick="closeCheckout()" style="flex:1; padding:0.75rem; background:#333; color:var(--text); border:none; cursor:pointer;">CANCEL</button>
+        </div>
+      </div>
+      
+      <input type="hidden" id="selected-payment-method">
     </div>
   </div>
 
