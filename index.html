@@ -2,56 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gone Postal – Black-Market Firepower</title>
+  <title>Going Postal – Black-Market Firepower</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <style>
-
     body.homepage{ display:flex; flex-direction:column; min-height:100vh; }
-    body.homepage .shop-only{ display:none!important; }          /* hide shop parts on homepage */
-
+    body.homepage .shop-only{ display:none!important; }
     .hp-wrap{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:2rem 1rem;
+      flex:1; display:flex; flex-direction:column; align-items:center;
+      justify-content:center; text-align:center; padding:2rem 1rem;
     }
     .hp-desc{
-      max-width:600px;
-      margin:1rem 0 2.5rem;
-      font-size:1.1rem;
-      line-height:1.5;
-      color:#aaa;
-      letter-spacing:.5px;
+      max-width:600px; margin:1rem 0 2.5rem; font-size:1.1rem;
+      line-height:1.5; color:#aaa; letter-spacing:.5px;
     }
     .acquired-btn{
       background:linear-gradient(90deg, var(--blood-red) 0%, #a52a2a 100%);
-      border:2px solid var(--accent);
-      color:#fff;
-      padding:22px 45px;
-      font-size:1.6rem;
-      font-weight:bold;
-      letter-spacing:3px;
-      cursor:pointer;
+      border:2px solid var(--accent); color:#fff; padding:22px 45px;
+      font-size:1.6rem; font-weight:bold; letter-spacing:3px; cursor:pointer;
       clip-path:polygon(0 0, 100% 0, 100% 80%, 95% 100%, 0 100%);
-      box-shadow:0 0 25px rgba(139,0,0,.6);
-      transition:.3s;
+      box-shadow:0 0 25px rgba(139,0,0,.6); transition:.3s;
     }
     .acquired-btn:hover{
-      transform:scale(1.08);
-      box-shadow:0 0 40px rgba(255,0,51,.8);
+      transform:scale(1.08); box-shadow:0 0 40px rgba(255,0,51,.8);
       background:linear-gradient(90deg, #a52a2a 0%, var(--blood-red) 100%);
     }
     .contact-card{
-      margin-top:auto;
-      margin-bottom:2rem;
-      background:rgba(0,0,0,.8);
-      border:1px solid var(--accent);
-      padding:1.5rem 2rem;
-      border-radius:5px;
+      margin-top:auto; margin-bottom:2rem; background:rgba(0,0,0,.8);
+      border:1px solid var(--accent); padding:1.5rem 2rem; border-radius:5px;
     }
     .contact-card h3{color:var(--glitch); margin-bottom:.8rem; letter-spacing:2px;}
     .contact-card a{color:var(--accent); text-decoration:none;}
@@ -59,7 +37,6 @@
   </style>
 </head>
 <body class="homepage">
-  
   <header>
     <div id="logo-container"><img id="logo" src="https://i.imgur.com/qFCCq2v.jpeg" alt="Gone Postal Logo" loading="lazy"></div>
     <h1 style="font-size:clamp(3rem,8vw,5rem); letter-spacing:8px; color:var(--accent); text-shadow:0 0 10px var(--glitch),0 0 30px var(--flame-orange);">GONE POSTAL</h1>
@@ -67,22 +44,20 @@
     <div id="cart" class="shop-only" onclick="showCart()">CART [<span id="cart-count">0</span>]</div>
   </header>
 
-
   <div class="hp-wrap">
     <p class="hp-desc">
-      “Look, I just shoot the packages—delivery confirmation is <em>your</em> problem.  
-      Browse the catalogue, pick your party favours, and nobody asks questions.  
+      “Look, I just shoot the packages—delivery confirmation is <em>your</em> problem.<br>
+      Browse the catalogue, pick your party favours, and nobody asks questions.<br>
       Welcome to the postal service that actually delivers.”
     </p>
     <button class="acquired-btn" onclick="enterShop()">ACQUIRED HANDBOOM</button>
 
     <div class="contact-card">
-      <h3>CONTACT CHANNELS</h3>
+      <h3>CONTACTS</h3>
       <p>📞 <a href="tel:+639051656449">0905-166-6449</a></p>
       <p>📧 <a href="mailto:harveynuel3011@gmail.com">harveynuel3011@gmail.com</a></p>
     </div>
   </div>
-
 
   <div id="filters" class="filters shop-only">
     <button class="filter-btn active" data-category="all">ALL</button>
@@ -90,7 +65,6 @@
     <button class="filter-btn" data-category="smg">SMG</button>
     <button class="filter-btn" data-category="shotgun">SHOTGUN</button>
   </div>
-
   <main id="gun-grid" class="shop-only" aria-live="polite"></main>
 
   <div id="modal-overlay" class="modal-overlay shop-only" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display:none;">
@@ -108,14 +82,14 @@
   </div>
 
   <script src="guns.js"></script>
-  <
+  <script>
     function enterShop(){
       document.body.classList.remove('homepage');   // swap skin
       document.querySelectorAll('.shop-only').forEach(el=>el.style.display=''); // reveal shop
       renderGuns();                                 // fill catalogue
-      document.querySelectorAll('.filter-btn').forEach(btn=>{
-        btn.addEventListener('click',()=>filterGuns(btn.dataset.category));
-      });
+      document.querySelectorAll('.filter-btn').forEach(btn=>
+        btn.addEventListener('click',()=>filterGuns(btn.dataset.category))
+      );
     }
 
     document.querySelector('.modal-close').onclick =
@@ -125,3 +99,4 @@
   </script>
 </body>
 </html>
+
