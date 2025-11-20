@@ -529,13 +529,32 @@ function checkout() {
 }
 
 function processPayment(method) {
+  document.getElementById('selected-payment-method').value = method;
+  
+  document.getElementById('payment-buttons').style.display = 'none';
+  
+  document.getElementById('customer-form').style.display = 'block';
+  
+  document.getElementById('checkout-title').textContent = 'DELIVERY DETAILS';
+}
+
+function confirmOrder() {
+  const name = document.getElementById('customer-name').value.trim();
+  const phone = document.getElementById('customer-phone').value.trim();
+  const method = document.getElementById('selected-payment-method').value;
+  
+  if (!name || !phone) {
+    alert('Please fill in all fields.');
+    return;
+  }
+  
   const total = cart.reduce((sum, item) => sum + parseInt(item.price.replace(/[^0-9]/g, '')), 0);
   const orderNumber = 'GP' + Date.now().toString().slice(-6);
   
   if (method === 'gcash') {
-    alert(`GCash payment selected!\n\nTotal: $${total}\nOrder #: ${orderNumber}\n\nSend payment to: 0905-166-6449\nScreenshot and email to: harveynuel3011@gmail.com`);
+    alert(`GCash payment selected!\n\nName: ${name}\nPhone: ${phone}\nTotal: $${total}\nOrder #: ${orderNumber}\n\nSend payment to: 0905-166-6449\nScreenshot and email to: harveynuel3011@gmail.com`);
   } else {
-    alert(`Cash on Delivery confirmed!\n\nTotal: $${total}\nOrder #: ${orderNumber}\n\nDelivery address will be requested via SMS. Stay armed.`);
+    alert(`Cash on Delivery confirmed!\n\nName: ${name}\nPhone: ${phone}\nTotal: $${total}\nOrder #: ${orderNumber}\n\nDelivery address will be requested via SMS. Stay armed.`);
   }
   
   closeCheckout();
@@ -544,6 +563,16 @@ function processPayment(method) {
 
 function closeCheckout() {
   document.getElementById('checkout-modal').style.display = 'none';
+  
+  document.getElementById('payment-buttons').style.display = 'flex';
+  
+  document.getElementById('customer-form').style.display = 'none';
+  
+  document.getElementById('checkout-title').textContent = 'SELECT PAYMENT METHOD';
+  
+  document.getElementById('customer-name').value = '';
+  document.getElementById('customer-phone').value = '';
+  document.getElementById('selected-payment-method').value = '';
 }
 
 
