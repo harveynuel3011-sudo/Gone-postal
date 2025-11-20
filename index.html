@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <script src="sound.js"></script>
-  <head>
   <meta charset="UTF-8">
   <title>Going Postal – Black-Market Firepower</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,23 +45,17 @@
     <div id="cart" class="shop-only" onclick="showCart()">CART [<span id="cart-count">0</span>]</div>
   </header>
 
-<div class="banner">
-  <img src="https://i.imgur.com/PmusE0l.png" alt="Promotional Banner" class="banner-img">
-</div>
-
-<div class="hp-wrap">
+  <div class="banner">
+    <img src="https://i.imgur.com/PmusE0l.png" alt="Promotional Banner" class="banner-img">
+  </div>
 
   <div class="hp-wrap">
     <p class="hp-desc">
-      “Look, I just shoot the packages delivery confirmation is <em>your</em> problem.<br>
+      "Look, I just shoot the packages delivery confirmation is <em>your</em> problem.<br>
       Browse the catalogue, pick your party favours, and nobody asks questions.<br>
-      Welcome to the postal service that actually delivers.”
+      Welcome to the postal service that actually delivers."
     </p>
-<div class="hp-wrap">
-  <p class="hp-desc">...</p>
-  <h1 style="...">GOING POSTAL</h1>
-  <button class="acquired-btn" onclick="enterShop()">GIMME HANDBOOM</button>
-</div>
+    <button class="acquired-btn" onclick="enterShop()">GIMME HANDBOOM</button>
 
     <div class="contact-card">
       <h3>CONTACTS</h3>
@@ -85,26 +78,46 @@
       <div id="modal-body"></div>
     </div>
   </div>
-<div id="cart-sidebar" class="cart-sidebar shop-only">
-  <div class="cart-header">
-    <h3>ASSET CART</h3>
-    <span id="cart-close">&times;</span>
-  </div>
-  <ul id="cart-items"></ul>
-  <div class="cart-footer">
-    <button onclick="clearCart()" class="clear-cart-btn">CLEAR CART</button>
-    <button onclick="checkout()" class="checkout-btn">PROCEED TO ACQUISITION</button>
-  </div>
-</div>
 
-<div id="checkout-modal" class="modal-overlay shop-only" style="display:none;">
-  <div class="modal-content" style="max-width:500px;">
-    <span class="modal-close" onclick="closeCheckout()">&times;</span>
-    <h2 style="color:var(--glitch); text-align:center; margin-bottom:1.5rem;">SELECT PAYMENT METHOD</h2>
-    <div style="display:flex; gap:1rem; margin-bottom:1rem;">
-      <button onclick="processPayment('gcash')" class="payment-btn gcash-btn">🇵🇭 GCASH</button>
-      <button onclick="processPayment('cod')" class="payment-btn cod-btn">💵 CASH ON DELIVERY</button>
+  <div id="cart-sidebar" class="cart-sidebar shop-only">
+    <div class="cart-header">
+      <h3>ASSET CART</h3>
+      <span id="cart-close">&times;</span>
     </div>
-    <button onclick="closeCheckout()" style="width:100%; padding:0.75rem; background:#333; color:var(--text); border:none; cursor:pointer;">CANCEL</button>
+    <ul id="cart-items"></ul>
+    <div class="cart-footer">
+      <button onclick="clearCart()" class="clear-cart-btn">CLEAR CART</button>
+      <button onclick="checkout()" class="checkout-btn">PROCEED TO ACQUISITION</button>
+    </div>
   </div>
-</div>
+
+  <div id="checkout-modal" class="modal-overlay shop-only" style="display:none;">
+    <div class="modal-content" style="max-width:500px;">
+      <span class="modal-close" onclick="closeCheckout()">&times;</span>
+      <h2 style="color:var(--glitch); text-align:center; margin-bottom:1.5rem;">SELECT PAYMENT METHOD</h2>
+      <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+        <button onclick="processPayment('gcash')" class="payment-btn gcash-btn">🇵🇭 GCASH</button>
+        <button onclick="processPayment('cod')" class="payment-btn cod-btn">💵 CASH ON DELIVERY</button>
+      </div>
+      <button onclick="closeCheckout()" style="width:100%; padding:0.75rem; background:#333; color:var(--text); border:none; cursor:pointer;">CANCEL</button>
+    </div>
+  </div>
+
+  <script src="guns.js"></script>
+  <script>
+    function enterShop(){
+      document.body.classList.remove('homepage');   
+      document.querySelectorAll('.shop-only').forEach(el=>el.style.display=''); 
+      renderGuns();                                 
+      document.querySelectorAll('.filter-btn').forEach(btn=>
+        btn.addEventListener('click',()=>filterGuns(btn.dataset.category))
+      );
+    }
+
+    document.querySelector('.modal-close').onclick =
+      ()=>document.getElementById('modal-overlay').style.display='none';
+    document.getElementById('modal-overlay').onclick =
+      function(e){if(e.target===this)this.style.display='none'};
+  </script>
+</body>
+</html>
