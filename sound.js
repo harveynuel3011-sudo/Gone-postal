@@ -42,7 +42,7 @@ const clickSound = new Audio('https://files.catbox.moe/lax7ur.mp3');
 
 [...introSounds, ...handboomSounds, ambientSound,
  ...gunSpecSounds, ...acquireSounds, clickSound]
-  .forEach(s => { s.preload = 'auto'; s.volume = 0.8; });
+  .forEach(s => { s.preload = 'auto'; s.volume = 0.5; });
 
 
 const playRandom = arr => {
