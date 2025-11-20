@@ -114,7 +114,6 @@ const guns = [
     pros: ["Ultra-compact design", "2.0 kg weight", "900 RPM rate of fire", "Roller-delayed recoil", "30-rnd mag capacity"],
     cons: ["9mm pistol caliber only", "Range limited to 100m", "Barrel too short", "Full-auto burns ammo", "Specialized CQB only"]
   },
-  // NEW FIREARMS WITH CORRECTED IMAGE URLS
   {
     name: "AK-12",
     price: "$2 800",
@@ -350,6 +349,11 @@ let cart = [];
 
 function renderGuns(gunsToRender = guns) {
   const grid = document.getElementById('gun-grid');
+  if (!grid) {
+    console.warn('Gun grid not found');
+    return;
+  }
+  
   grid.innerHTML = '';
   gunsToRender.forEach(g => {
     const card = document.createElement('div');
@@ -496,7 +500,13 @@ function renderCart() {
 
 function showCart() {
   const sidebar = document.getElementById('cart-sidebar');
+  if (!sidebar) {
+    console.error('Cart sidebar not found!');
+    return;
+  }
+  
   sidebar.classList.toggle('active');
+  
   if (sidebar.classList.contains('active')) {
     renderCart();
   }
@@ -538,14 +548,23 @@ function closeCheckout() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.filter-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      filterGuns(this.dataset.category);
+  try {
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        filterGuns(this.dataset.category);
+      });
     });
-  });
-  
-  document.getElementById('cart').addEventListener('click', showCart);
-  document.getElementById('cart-close').addEventListener('click', showCart);
-  
-  renderGuns();
+    
+    const cartBtn = document.getElementById('cart');
+    const cartCloseBtn = document.getElementById('cart-close');
+    
+    if (cartBtn) cartBtn.addEventListener('click', showCart);
+    if (cartCloseBtn) cartCloseBtn.addEventListener('click', showCart);
+    
+    if (!document.body.classList.contains('homepage')) {
+      renderGuns();
+    }
+  } catch (e) {
+    console.error('Initialization error:', e);
+  }
 });
